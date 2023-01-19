@@ -43,3 +43,6 @@ function Hooks() {
 }
 
 export default Hooks;
+
+# command 
+  - in App.js import this Hooks Component
