@@ -64,7 +64,52 @@ function Hooks() {
 
 export default Hooks;
 
-=========================================================================================================================================
+======================================================== useCallBack() =================================================================
+
+import React, { useState, useCallback } from "react";
+
+function Hooks() {
+  const [data, setData] = useState([
+    {
+      name: "Arsil",
+      roll: 1,
+    },
+  ]);
+  const add = useCallback(() => {
+    return setData((old_data) => {
+      return [
+        ...old_data,
+        {
+          name: "Arsil",
+          roll: 1,
+        },
+      ];
+    });
+  }, [data]);
+  return (
+    <div className="container py-4">
+      <table className="table">
+        <tr>
+          <th>Name</th>
+          <th>Roll</th>
+        </tr>
+        {data.map((item, index) => {
+          return (
+            <tr key={item.roll}>
+              <td>{item.name}</td>
+              <td>{item.roll}</td>
+            </tr>
+          );
+        })}
+      </table>
+      <button onClick={add}>Add</button>
+    </div>
+  );
+}
+
+export default Hooks;
+
+_________________________________________________________________________________________________________________________________
 
 # command 
   - in App.js import this Hooks Component
