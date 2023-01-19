@@ -1,0 +1,45 @@
+import React, {
+  useState,
+  createContext,
+  useContext,
+  useRef,
+  useEffect,
+} from "react";
+
+const Sender = createContext();
+const Header = () => {
+  const userData = useContext(Sender);
+  const title = useRef();
+  const [color, setColor] = useState("black");
+  useEffect(() => {
+    title.current.style.color = color;
+  }, [color]);
+  return (
+    <div>
+      <h3 className="display-6" ref={title}>
+        {userData.name}
+      </h3>
+      <button onClick={() => setColor("green")}>Test</button>
+      <h3 className="display-6">{userData.roll}</h3>
+    </div>
+  );
+};
+const Footer = () => {
+  return <div></div>;
+};
+function Hooks() {
+  const [data, setData] = useState({
+    name: "Arsil",
+    roll: 1,
+  });
+  return (
+    <div>
+      <Sender.Provider value={data}>
+        <Header />
+        <Footer />
+      </Sender.Provider>
+    </div>
+  );
+}
+
+export default Hooks;
