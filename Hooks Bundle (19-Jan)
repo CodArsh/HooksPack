@@ -49,7 +49,7 @@ import React, { useReducer } from "react";
 
 function Hooks() {
   const controlReducer = (currentState, checkAction) => {
-    return currentState === "text" ? "password" : "text";
+    return checkAction === "text" ? "password" : "text";
   };
   const [type, setType] = useReducer(controlReducer, "password");
   return (
