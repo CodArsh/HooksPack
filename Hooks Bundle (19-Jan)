@@ -44,5 +44,27 @@ function Hooks() {
 
 export default Hooks;
 
+======================================================= useReducer() ===============================================================
+import React, { useReducer } from "react";
+
+function Hooks() {
+  const controlReducer = (currentState, checkAction) => {
+    return currentState === "text" ? "password" : "text";
+  };
+  const [type, setType] = useReducer(controlReducer, "password");
+  return (
+    <div>
+      <input type={type} />
+      <button onClick={() => setType(type)}>
+        <i className="fa fa-eye"></i>
+      </button>
+    </div>
+  );
+}
+
+export default Hooks;
+
+=========================================================================================================================================
+
 # command 
   - in App.js import this Hooks Component
